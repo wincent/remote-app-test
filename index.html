@@ -9,7 +9,20 @@
 </head>
 <body>
   <h1>Test</h1>
+  <script>
+    // Temporary hack to allow us to consume AMD-wrapped module from DXP.
+    var Liferay = {
+      Loader: {
+        define: function(m, d, cb) {
+          cb();
+        }
+      }
+    };
+  </script>
   <script src="//0.0.0.0:8080/o/js/resolved-module/remote-web-app-client-js@1.0.0/js/index.js"></script>
+  <script>
+    delete window.Liferay;
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
