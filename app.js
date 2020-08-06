@@ -10,7 +10,7 @@
     console.log(error);
   }
 
-  document.getElementById('hello').addEventListener('submit', function() {
+  document.getElementById('hello').addEventListener('click', function() {
     try {
       __LIFERAY_REMOTE_WEB_APP_SDK__.openToast({
         message: 'Hello from the other side',
