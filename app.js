@@ -3,9 +3,11 @@
 
   console.log('app.js', window.__LIFERAY_REMOTE_WEB_APP_SDK__);
 
-  // TODO show that this still works if we load first
   try {
-    __LIFERAY_REMOTE_WEB_APP_SDK__.postMessage({key: 'value'});
+    __LIFERAY_REMOTE_WEB_APP_SDK__.openToast({
+      message: 'Welcome to the danger zone',
+      type: 'danger',
+    });
   } catch (error) {
     console.log(error);
   }
