@@ -25,8 +25,19 @@
 			typeof Object.entries === 'function'
 		) {
 			console.table(Object.entries(response));
-		} else  {
-			console.log('ok', response.ok, 'status', response.status, 'statusText', response.statusText, 'url', response.url, 'redirected', response.redirected);
+		} else {
+			console.log(
+				'ok',
+				response.ok,
+				'status',
+				response.status,
+				'statusText',
+				response.statusText,
+				'url',
+				response.url,
+				'redirected',
+				response.redirected
+			);
 		}
 	}
 
