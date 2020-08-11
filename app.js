@@ -1,10 +1,17 @@
 (function() {
   'use strict';
 
-  console.log('app.js', window.__LIFERAY_REMOTE_WEB_APP_SDK__);
+  var SDK = window.__LIFERAY_REMOTE_WEB_APP_SDK__;
+
+  if (!SDK) {
+    console.error('No __LIFERAY_REMOTE_WEB_APP_SDK__ on window');
+
+    return;
+  }
+
 
   try {
-    __LIFERAY_REMOTE_WEB_APP_SDK__.openToast({
+    SDK.openToast({
       message: 'Welcome to the danger zone',
       type: 'danger',
     });
@@ -14,7 +21,7 @@
 
   document.getElementById('hello').addEventListener('click', function() {
     try {
-      __LIFERAY_REMOTE_WEB_APP_SDK__.openToast({
+      SDK.openToast({
         message: 'Hello from the other side',
       });
     } catch (error) {
@@ -24,7 +31,7 @@
 
   document.getElementById('extend').addEventListener('click', function() {
     try {
-      __LIFERAY_REMOTE_WEB_APP_SDK__.fetch(
+      SDK.fetch(
         'http://0.0.0.0:8080/c/portal/extend_session'
       ).then(function () {
         console.log('extended');
@@ -40,7 +47,7 @@
     // NOTE: Using "guest" as siteID is naughty, but I don't want to rely on the
     // potentially unstable numeric ID from my dev environment (20122).
     try {
-      __LIFERAY_REMOTE_WEB_APP_SDK__.fetch(
+      SDK.fetch(
         'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
       ).then(function (response) {
         console.log('got response');
