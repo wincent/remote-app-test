@@ -58,4 +58,14 @@
 				console.log('caught', error);
 			});
 	});
+
+	button('graphql', function () {
+		SDK.graphql('{documents(siteKey: "guest") {totalCount}}')
+			.then(function (data) {
+				console.log('got data', data);
+			})
+			.catch(function (error) {
+				console.log('caught', error);
+			});
+	});
 })();
