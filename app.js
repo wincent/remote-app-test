@@ -19,6 +19,17 @@
 		});
 	}
 
+	function dumpResponse(response) {
+		if (
+			typeof console.table === 'function' &&
+			typeof Object.entries === 'function'
+		) {
+			console.table(Object.entries(response));
+		} else  {
+			console.log('ok', response.ok, 'status', response.status, 'statusText', response.statusText, 'url', response.url, 'redirected', response.redirected);
+		}
+	}
+
 	SDK.openToast({
 		message: 'Welcome to the danger zone',
 		type: 'danger',
@@ -47,7 +58,7 @@
 			'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
 		)
 			.then(function (response) {
-				console.log('got response');
+				dumpResponse(response);
 
 				return response.json();
 			})
@@ -66,7 +77,7 @@
 			'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
 		)
 			.then(function (response) {
-				console.log('got response');
+				dumpResponse(response);
 
 				return response.text();
 			})
