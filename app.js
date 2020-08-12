@@ -13,9 +13,9 @@
 		.then(function (url) {
 			const link = document.createElement('link');
 
-			link.setAttribute('rel', 'stylesheet')
-			link.setAttribute('type', 'text/css')
-			link.setAttribute('href', url)
+			link.href = url;
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
 
 			document.head.appendChild(link);
 		})
