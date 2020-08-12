@@ -9,6 +9,20 @@
 		return;
 	}
 
+	SDK.get('css')
+		.then(function (url) {
+			const link = document.createElement('link');
+
+			link.setAttribute('rel', 'stylesheet')
+			link.setAttribute('type', 'text/css')
+			link.setAttribute('href', url)
+
+			document.head.appendChild(link);
+		})
+		.catch(function (error) {
+			console.error(error);
+		});
+
 	function button(id, handler) {
 		document.getElementById(id).addEventListener('click', function () {
 			try {
