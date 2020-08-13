@@ -192,9 +192,10 @@
 		// iframe.
 
 		var client = new SDK.Client()
-			.on('error', function (error) {
-				appendResult('Got an error: ' + error);
-			});
+
+		client.on('error', function (error) {
+			appendResult('Got an error: ' + error);
+		});
 
 		// Registration is lazy, for now, so won't see the error until we try to
 		// do something.
