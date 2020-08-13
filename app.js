@@ -36,6 +36,14 @@
 			result.appendChild(elementOrString);
 		}
 
+		const timestamp = document.createElement('span');
+
+		timestamp.classList.add('timestamp');
+
+		timestamp.appendChild(document.createTextNode(new Date().toLocaleTimeString()));
+
+		result.appendChild(timestamp);
+
 		results.appendChild(result);
 
 		results.scrollTop = results.scrollHeight;
