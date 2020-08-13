@@ -191,9 +191,14 @@
 		// This one is an error because you can only register one client per
 		// iframe.
 
-		new SDK.Client()
+		var client = new SDK.Client()
 			.on('error', function (error) {
 				appendResult('Got an error: ' + error);
 			});
+
+		// Registration is lazy, for now, so won't see the error until we try to
+		// do something.
+
+		client.openToast({message: 'Nice try, but toast will never show'});
 	});
 })();
