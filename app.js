@@ -93,6 +93,10 @@
 		return element;
 	}
 
+	// This one is (currently) a demo of firing an event before the host side is
+	// fully ready. The SDK will retry with exponential backoff until it
+	// succeeds.
+
 	client.openToast({
 		message: 'Welcome to the danger zone',
 		type: 'danger',
@@ -180,6 +184,16 @@
 			})
 			.catch(function (error) {
 				console.log('caught', error);
+			});
+	});
+
+	button('error', function() {
+		// This one is an error because you can only register one client per
+		// iframe.
+
+		new SDK.Client()
+			.on('error', function (error) {
+				appendResult('Got an error: ' + error);
 			});
 	});
 })();
