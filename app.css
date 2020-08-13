@@ -15,6 +15,12 @@ body {
 	padding: 8px;
 }
 
+#results img {
+	height: 64px;
+	object-fit: contain:
+	width: 64px;
+}
+
 #results .result {
 	background-color: #fcfcfc;
 	border: 1px solid #eee;
