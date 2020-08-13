@@ -9,7 +9,9 @@
 		return;
 	}
 
-	SDK.get('css')
+	var client = new SDK.Client({debug: true});
+
+	client.get('css')
 		.then(function (url) {
 			const link = document.createElement('link');
 
@@ -91,7 +93,7 @@
 		return element;
 	}
 
-	SDK.openToast({
+	client.openToast({
 		message: 'Welcome to the danger zone',
 		type: 'danger',
 	});
@@ -99,13 +101,13 @@
 	button('hello', function () {
 		var message = 'Hello from the other side';
 
-		SDK.openToast({message});
+		client.openToast({message});
 
 		appendResult(message);
 	});
 
 	button('extend', function () {
-		SDK.fetch('http://0.0.0.0:8080/c/portal/extend_session')
+		client.fetch('http://0.0.0.0:8080/c/portal/extend_session')
 			.then(function () {
 				appendResult('extended');
 			})
@@ -117,7 +119,7 @@
 	button('json', function () {
 		// NOTE: Using "guest" as siteID is naughty, but I don't want to rely on the
 		// potentially unstable numeric ID from my dev environment (20122).
-		SDK.fetch(
+		client.fetch(
 			'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
 		)
 			.then(function (response) {
@@ -136,7 +138,7 @@
 	button('text', function () {
 		// NOTE: Using "guest" as siteID is naughty, but I don't want to rely on the
 		// potentially unstable numeric ID from my dev environment (20122).
-		SDK.fetch(
+		client.fetch(
 			'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
 		)
 			.then(function (response) {
@@ -153,7 +155,7 @@
 	});
 
 	button('blob', function () {
-		SDK.fetch('/image/layout_set_logo')
+		client.fetch('/image/layout_set_logo')
 			.then(function (response) {
 				return response.blob();
 			})
@@ -172,7 +174,7 @@
 	});
 
 	button('graphql', function () {
-		SDK.graphql('{documents(siteKey: "guest") {totalCount}}')
+		client.graphql('{documents(siteKey: "guest") {totalCount}}')
 			.then(function (data) {
 				appendResult(pre(JSON.stringify(data, null, 2)));
 			})
