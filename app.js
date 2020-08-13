@@ -33,7 +33,7 @@
 		if (typeof elementOrString === 'string') {
 			row.appendChild(document.createTextNode(elementOrString));
 		} else {
-			row.appendChild(element);
+			row.appendChild(elementOrString);
 		}
 
 		results.appendChild(row);
