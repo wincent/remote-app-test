@@ -23,14 +23,18 @@
 			console.error(error);
 		});
 
-	function appendResult(element) {
+	function appendResult(elementOrString) {
 		var results = document.getElementById('results');
 
 		var row = document.createElement('div');
 
 		row.classList.add('row');
 
-		row.appendChild(element);
+		if (typeof elementOrString === 'string') {
+			row.appendChild(document.createTextNode(elementOrString));
+		} else {
+			row.appendChild(element);
+		}
 
 		results.appendChild(row);
 
@@ -69,21 +73,33 @@
 		}
 	}
 
+	function pre(text) {
+		var element = document.createElement('pre');
+
+		var code = element.appendChild(document.createElement('code'));
+
+		code.appendChild(document.createTextNode(text));
+
+		return element;
+	}
+
 	SDK.openToast({
 		message: 'Welcome to the danger zone',
 		type: 'danger',
 	});
 
 	button('hello', function () {
-		SDK.openToast({
-			message: 'Hello from the other side',
-		});
+		var message = 'Hello from the other side';
+
+		SDK.openToast({message});
+
+		appendResult(message);
 	});
 
 	button('extend', function () {
 		SDK.fetch('http://0.0.0.0:8080/c/portal/extend_session')
 			.then(function () {
-				console.log('extended');
+				appendResult('extended');
 			})
 			.catch(function (error) {
 				console.log('caught', error);
@@ -102,7 +118,7 @@
 				return response.json();
 			})
 			.then(function (json) {
-				console.log('got JSON', json);
+				appendResult(pre(JSON.stringify(json, null, 2)));
 			})
 			.catch(function (error) {
 				console.log('caught', error);
@@ -121,7 +137,7 @@
 				return response.text();
 			})
 			.then(function (text) {
-				console.log('got text', text);
+				appendResult(pre(text));
 			})
 			.catch(function (error) {
 				console.log('caught', error);
@@ -150,7 +166,7 @@
 	button('graphql', function () {
 		SDK.graphql('{documents(siteKey: "guest") {totalCount}}')
 			.then(function (data) {
-				console.log('got data', data);
+				appendResult(pre(JSON.stringify(data, null, 2)));
 			})
 			.catch(function (error) {
 				console.log('caught', error);
