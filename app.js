@@ -197,4 +197,8 @@
 			appendResult('Got an error: ' + JSON.stringify(error));
 		});
 	});
+
+	document.getElementById('debug').addEventListener('change', function (event) {
+		client.debug = event.target.checked;
+	});
 })();
