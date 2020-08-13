@@ -23,6 +23,20 @@
 			console.error(error);
 		});
 
+	function appendResult(element) {
+		var results = document.getElementById('results');
+
+		var row = document.createElement('div');
+
+		row.classList.add('row');
+
+		row.appendChild(element);
+
+		results.appendChild(row);
+
+		results.scrollTop = results.scrollHeight;
+	}
+
 	function button(id, handler) {
 		document.getElementById(id).addEventListener('click', function () {
 			try {
@@ -108,6 +122,25 @@
 			})
 			.then(function (text) {
 				console.log('got text', text);
+			})
+			.catch(function (error) {
+				console.log('caught', error);
+			});
+	});
+
+	button('blob', function () {
+		SDK.fetch('/image/layout_set_logo')
+			.then(function (response) {
+				return response.blob();
+			})
+			.then(function (blob) {
+				var url = URL.createObjectURL(blob);
+
+				var img = document.createElement('img');
+
+				img.src = url;
+
+				appendResult(img);
 			})
 			.catch(function (error) {
 				console.log('caught', error);

@@ -5,3 +5,29 @@ html {
 body {
 	padding: 4px;
 }
+
+#results {
+	border: 1px solid #eee;
+	border-radius: 2px;
+	height: 50vh;
+	margin-top: 16px;
+	overflow-y: scroll;
+	padding: 8px;
+}
+
+#results .row {
+	background-color: #fcfcfc;
+	border: 1px solid #eee;
+	border-radius: 2px;
+	margin-top: 8px;
+	padding: 8px;
+}
+
+#results .row:nth-child(odd) {
+	background-color: #f2f2f2;
+}
+
+#results .row:hover {
+	border-color: #ccc;
+	background-color: #eee;
+}
