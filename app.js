@@ -194,7 +194,7 @@
 		var client = new SDK.Client()
 
 		client.on('error', function (error) {
-			appendResult('Got an error: ' + error);
+			appendResult('Got an error: ' + JSON.stringify(error));
 		});
 
 		// Registration is lazy, for now, so won't see the error until we try to
