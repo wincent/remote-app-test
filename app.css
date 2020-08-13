@@ -15,7 +15,7 @@ body {
 	padding: 8px;
 }
 
-#results .row {
+#results .result {
 	background-color: #fcfcfc;
 	border: 1px solid #eee;
 	border-radius: 2px;
@@ -23,11 +23,11 @@ body {
 	padding: 8px;
 }
 
-#results .row:nth-child(odd) {
+#results .result:nth-child(odd) {
 	background-color: #f2f2f2;
 }
 
-#results .row:hover {
+#results .result:hover {
 	border-color: #ccc;
 	background-color: #eee;
 }

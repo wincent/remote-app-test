@@ -26,17 +26,17 @@
 	function appendResult(elementOrString) {
 		var results = document.getElementById('results');
 
-		var row = document.createElement('div');
+		var result = document.createElement('div');
 
-		row.classList.add('row');
+		result.classList.add('result');
 
 		if (typeof elementOrString === 'string') {
-			row.appendChild(document.createTextNode(elementOrString));
+			result.appendChild(document.createTextNode(elementOrString));
 		} else {
-			row.appendChild(elementOrString);
+			result.appendChild(elementOrString);
 		}
 
-		results.appendChild(row);
+		results.appendChild(result);
 
 		results.scrollTop = results.scrollHeight;
 	}
