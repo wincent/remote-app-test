@@ -196,10 +196,5 @@
 		client.on('error', function (error) {
 			appendResult('Got an error: ' + JSON.stringify(error));
 		});
-
-		// Registration is lazy, for now, so won't see the error until we try to
-		// do something.
-
-		client.openToast({message: 'Nice try, but toast will never show'});
 	});
 })();
