@@ -202,11 +202,32 @@
 		client.debug = event.target.checked;
 	});
 
+	var dropdownActive = false;
+
+	document.getElementById('get').addEventListener('click', function (event) {
+		var menu = document.getElementById('menu');
+
+		if (dropdownActive) {
+			dropdownActive = false;
+			menu.classList.remove('show');
+		} else {
+			dropdownActive = true;
+			menu.classList.add('show');
+		}
+	});
+
 	document.addEventListener('click', function(event) {
 		var element = event.target;
 
 		if (element.classList.contains('get-item') && element.href) {
-			var property = element.href.slice(1);
+			var property = element.href.replace(/.*#/, '');
+
+
+			var menu = document.getElementById('menu');
+
+			menu.classList.remove('show');
+
+			dropdownActive = false;
 
 			client.get(property)
 				.then(function (value) {
