@@ -110,6 +110,17 @@
 		appendResult(message);
 	});
 
+	button('error', function() {
+		// This one is an error because you can only register one client per
+		// iframe.
+
+		var client = new SDK.Client()
+
+		client.on('error', function (error) {
+			appendResult('Got an error: ' + JSON.stringify(error));
+		});
+	});
+
 	button('extend', function () {
 		client.fetch('http://0.0.0.0:8080/c/portal/extend_session')
 			.then(function () {
@@ -187,18 +198,22 @@
 			});
 	});
 
-	button('error', function() {
-		// This one is an error because you can only register one client per
-		// iframe.
-
-		var client = new SDK.Client()
-
-		client.on('error', function (error) {
-			appendResult('Got an error: ' + JSON.stringify(error));
-		});
-	});
-
 	document.getElementById('debug').addEventListener('change', function (event) {
 		client.debug = event.target.checked;
+	});
+
+	document.addEventListener('click', function(event) {
+		var element = event.currentTarget;
+		if (element.classList.contains('get-item') && element.href) {
+			var property = element.href.slice(1);
+
+			client.get(property)
+				.then(function (value) {
+					appendResult(pre(JSON.stringify(value)));
+				})
+				.catch(function (error) {
+					appendResult(error);
+				});
+		}
 	});
 })();
