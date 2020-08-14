@@ -203,7 +203,8 @@
 	});
 
 	document.addEventListener('click', function(event) {
-		var element = event.currentTarget;
+		var element = event.target;
+
 		if (element.classList.contains('get-item') && element.href) {
 			var property = element.href.slice(1);
 
