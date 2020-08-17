@@ -110,7 +110,7 @@
 		appendResult(message);
 	});
 
-	button('error', function() {
+	button('error', function () {
 		// This one is an error because you can only register one client per
 		// iframe.
 
@@ -119,6 +119,10 @@
 		client.on('error', function (error) {
 			appendResult('Got an error: ' + JSON.stringify(error));
 		});
+	});
+
+	button('unregister', function () {
+		client.dispose();
 	});
 
 	button('extend', function () {
