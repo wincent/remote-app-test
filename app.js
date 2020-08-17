@@ -121,8 +121,18 @@
 		});
 	});
 
-	button('unregister', function () {
-		client.dispose();
+	button('registration', function (event) {
+		var element = event.currentTarget;
+
+		if (element.innerText.includes('Unregister')) {
+			client.dispose();
+
+			element.innerText = 'Register';
+		} else {
+			client = new SDK.Client();
+
+			element.innerText = 'Unregister';
+		}
 	});
 
 	button('extend', function () {
