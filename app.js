@@ -1,10 +1,10 @@
 (function () {
 	'use strict';
 
-	var SDK = window.__LIFERAY_REMOTE_WEB_APP_SDK__;
+	var SDK = window.__LIFERAY_REMOTE_APP_SDK__;
 
 	if (!SDK) {
-		console.error('No __LIFERAY_REMOTE_WEB_APP_SDK__ on window');
+		console.error('No __LIFERAY_REMOTE_APP_SDK__ on window');
 
 		return;
 	}
