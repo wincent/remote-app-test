@@ -17,7 +17,7 @@ body {
 
 #results img {
 	height: 64px;
-	object-fit: contain:
+	object-fit: contain;
 	width: 64px;
 }
 
