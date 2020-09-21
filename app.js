@@ -11,7 +11,8 @@
 
 	var client = new SDK.Client({debug: true});
 
-	client.get('css')
+	client
+		.get('css')
 		.then(function (url) {
 			const link = document.createElement('link');
 
@@ -42,7 +43,9 @@
 
 		timestamp.classList.add('timestamp');
 
-		timestamp.appendChild(document.createTextNode(new Date().toLocaleTimeString()));
+		timestamp.appendChild(
+			document.createTextNode(new Date().toLocaleTimeString())
+		);
 
 		result.appendChild(timestamp);
 
@@ -114,7 +117,7 @@
 		// This one is an error because you can only register one client per
 		// iframe.
 
-		var client = new SDK.Client()
+		var client = new SDK.Client();
 
 		client.on('error', function (error) {
 			appendResult('Got an error: ' + JSON.stringify(error));
@@ -136,7 +139,8 @@
 	});
 
 	button('extend', function () {
-		client.fetch('http://0.0.0.0:8080/c/portal/extend_session')
+		client
+			.fetch('http://0.0.0.0:8080/c/portal/extend_session')
 			.then(function () {
 				appendResult('extended');
 			})
@@ -148,9 +152,10 @@
 	button('json', function () {
 		// NOTE: Using "guest" as siteID is naughty, but I don't want to rely on the
 		// potentially unstable numeric ID from my dev environment (20122).
-		client.fetch(
-			'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
-		)
+		client
+			.fetch(
+				'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
+			)
 			.then(function (response) {
 				dumpResponse(response);
 
@@ -167,9 +172,10 @@
 	button('text', function () {
 		// NOTE: Using "guest" as siteID is naughty, but I don't want to rely on the
 		// potentially unstable numeric ID from my dev environment (20122).
-		client.fetch(
-			'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
-		)
+		client
+			.fetch(
+				'http://0.0.0.0:8080/o/headless-delivery/v1.0/sites/guest/structured-contents/'
+			)
 			.then(function (response) {
 				dumpResponse(response);
 
@@ -184,7 +190,8 @@
 	});
 
 	button('blob', function () {
-		client.fetch('/image/layout_set_logo')
+		client
+			.fetch('/image/layout_set_logo')
 			.then(function (response) {
 				return response.blob();
 			})
@@ -203,7 +210,8 @@
 	});
 
 	button('graphql', function () {
-		client.graphql('{documents(siteKey: "guest") {totalCount}}')
+		client
+			.graphql('{documents(siteKey: "guest") {totalCount}}')
 			.then(function (data) {
 				appendResult(pre(JSON.stringify(data, null, 2)));
 			})
@@ -212,9 +220,11 @@
 			});
 	});
 
-	document.getElementById('debug').addEventListener('change', function (event) {
-		client.debug = event.target.checked;
-	});
+	document
+		.getElementById('debug')
+		.addEventListener('change', function (event) {
+			client.debug = event.target.checked;
+		});
 
 	var dropdownActive = false;
 
@@ -230,12 +240,11 @@
 		}
 	});
 
-	document.addEventListener('click', function(event) {
+	document.addEventListener('click', function (event) {
 		var element = event.target;
 
 		if (element.classList.contains('get-item') && element.href) {
 			var property = element.href.replace(/.*#/, '');
-
 
 			var menu = document.getElementById('menu');
 
@@ -243,7 +252,8 @@
 
 			dropdownActive = false;
 
-			client.get(property)
+			client
+				.get(property)
 				.then(function (value) {
 					appendResult(pre(JSON.stringify(value)));
 				})
@@ -253,7 +263,7 @@
 		}
 	});
 
-	button('sign-out', function() {
+	button('sign-out', function () {
 		appendResult('navigating');
 		client.navigate('/c/portal/logout');
 	});

@@ -13,8 +13,10 @@
 		<div class="button-holder">
 			<button class="btn btn-secondary" id="hello">Say hello</button>
 			<button class="btn btn-secondary" id="error">Trigger error</button>
-			<button class="btn btn-secondary" id="registration">Unregister</button>
-			<div class="dropdown" style="display: inline-block;">
+			<button class="btn btn-secondary" id="registration">
+				Unregister
+			</button>
+			<div class="dropdown" style="display: inline-block">
 				<button
 					aria-expanded="false"
 					aria-haspopup="true"
@@ -31,32 +33,85 @@
 					class="dropdown-menu"
 					id="menu"
 					x-placement="bottom-start"
-					style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);"
+					style="
+						position: absolute;
+						will-change: transform;
+						top: 0px;
+						left: 0px;
+						transform: translate3d(0px, 40px, 0px);
+					"
 				>
-					<li><a class="dropdown-item get-item" href="#companyId">Company ID</a></li>
-					<li><a class="dropdown-item get-item" href="#css">CSS URL</a></li>
-					<li><a class="dropdown-item get-item" href="#defaultLanguageId">Default language ID</a></li>
-					<li><a class="dropdown-item get-item" href="#isControlPanel">Is Control Panel?</a></li>
-					<li><a class="dropdown-item get-item" href="#languageId">Language ID</a></li>
-					<li><a class="dropdown-item get-item" href="#isSignedIn">Signed In?</a></li>
-					<li><a class="dropdown-item get-item" href="#userId">User ID</a></li>
-					<li><a class="dropdown-item get-item" href="#userName">User Name</a></li>
+					<li>
+						<a class="dropdown-item get-item" href="#companyId"
+							>Company ID</a
+						>
+					</li>
+					<li>
+						<a class="dropdown-item get-item" href="#css"
+							>CSS URL</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item get-item"
+							href="#defaultLanguageId"
+							>Default language ID</a
+						>
+					</li>
+					<li>
+						<a class="dropdown-item get-item" href="#isControlPanel"
+							>Is Control Panel?</a
+						>
+					</li>
+					<li>
+						<a class="dropdown-item get-item" href="#languageId"
+							>Language ID</a
+						>
+					</li>
+					<li>
+						<a class="dropdown-item get-item" href="#isSignedIn"
+							>Signed In?</a
+						>
+					</li>
+					<li>
+						<a class="dropdown-item get-item" href="#userId"
+							>User ID</a
+						>
+					</li>
+					<li>
+						<a class="dropdown-item get-item" href="#userName"
+							>User Name</a
+						>
+					</li>
 					<li class="dropdown-divider"></li>
-					<li><a class="dropdown-item get-item" href="#nonExistent">Non-existent property</a></li>
+					<li>
+						<a class="dropdown-item get-item" href="#nonExistent"
+							>Non-existent property</a
+						>
+					</li>
 				</ul>
-				<button class="btn btn-secondary" id="sign-out">Sign out</button>
+				<button class="btn btn-secondary" id="sign-out">
+					Sign out
+				</button>
 			</div>
 		</div>
 		<h2>Network</h2>
 		<div class="button-holder">
-			<button class="btn btn-secondary" id="extend">Extend session</button>
-			<button class="btn btn-secondary" id="json">Get some JSON (REST)</button>
-			<button class="btn btn-secondary" id="text">Get some text (REST)</button>
+			<button class="btn btn-secondary" id="extend">
+				Extend session
+			</button>
+			<button class="btn btn-secondary" id="json">
+				Get some JSON (REST)
+			</button>
+			<button class="btn btn-secondary" id="text">
+				Get some text (REST)
+			</button>
 			<button class="btn btn-secondary" id="blob">Get a Blob</button>
-			<button class="btn btn-secondary" id="graphql">Run GraphQL query</button>
+			<button class="btn btn-secondary" id="graphql">
+				Run GraphQL query
+			</button>
 		</div>
-		<div id="results">
-		</div>
+		<div id="results"></div>
 		<hr />
 		<div class="form-check">
 			<input
