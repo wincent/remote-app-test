@@ -252,4 +252,9 @@
 				});
 		}
 	});
+
+	button('sign-out', function() {
+		appendResult('navigating');
+		client.navigate('/c/portal/logout');
+	});
 })();
